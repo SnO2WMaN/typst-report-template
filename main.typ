@@ -3,6 +3,7 @@
 #show: project.with(
   title: "テスト文章",
   authors: ("SnO2WMaN",),
+  meta: json("meta.json"),
 )
 
 = はじめに <sect:intro>

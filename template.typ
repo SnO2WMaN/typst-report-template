@@ -5,6 +5,7 @@
   title: "",
   authors: (),
   date: (datetime.today().year(), datetime.today().month(), datetime.today().day()),
+  meta: (),
   body,
 ) = {
 
@@ -12,28 +13,40 @@
   set page(numbering: "1", number-align: center)
 
   set heading(numbering: "1.")
-  show heading: set text(size: 14pt, font: ("Shippori Antique B1"), lang: "ja")
+  show heading: set text(size: 14pt, font: "Shippori Antique B1", lang: "ja")
 
-  set text(size: 9pt, font: ("Shippori Mincho B1"), lang: "ja")
+  set text(size: 9pt, fill: luma(10), font: "Shippori Mincho B1", lang: "ja")
   show raw: set text(font: "JuliaMono", size: 7pt)
 
   show: thmrules.with(qed-symbol: [❏])
 
   align(center)[
-    #block(text(1.75em, font: "Shippori Antique B1", title))
+    #block(text(1.75em, font: "Shippori Antique B1")[#title])
+    #block(
+      text(0.8em, font: "JuliaMono")[
+        #text[#date.at(0).#date.at(1).#date.at(2)]
+      ],
+    )
   ]
 
   pad(
-    top: 0.5em,
-    bottom: 0.5em,
+    top: 0.25em,
+    bottom: 0.25em,
     x: 2em,
     grid(
       columns: (1fr,) * calc.min(3, authors.len()),
-      gutter: 1em,
-      align(center)[#date.at(0).#date.at(1).#date.at(2)],
       ..authors.map(author => align(center, strong(author))),
     ),
   )
+
+  align(center)[
+    #text(size: 7pt, font: "JuliaMono")[
+      #link(meta.repository)[#meta.repository]
+      #link(meta.repository)[
+        #text(fill: luma(150))[\@ #meta.sha]
+      ]
+    ]
+  ]
 
   set par(justify: true)
 
