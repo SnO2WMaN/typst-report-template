@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install "Shippori Antique B1"
+        run: |
+          cd ${{ runner.temp }}
+          wget -O shippori-antique-b1.zip https://api.fontsource.org/v1/download/shippori-antique-b1
+          unzip shippori-antique-b1.zip
+          rm ttf/shippori-antique-b1-[0-9]*
+          mv ttf /usr/share/fonts/shippori-antique-b1
+          fc-cache -fv
+      - name: Install "Julia Mono"
+        run: |
+          cd ${{ runner.temp }}
+          wget -O julia-mono.zip https://github.com/cormullion/juliamono/releases/download/v0.058/JuliaMono-ttf.zip
+          unzip julia-mono.zip -d julia-mono
+          rm julia-mono/LICENSE
+          mv julia-mono /usr/share/fonts/julia-mono
+          fc-cache -fv
+      - uses: typst-community/setup-typst@v3
+      - run: typst fonts
+      - run: typst compile main.typ main.pdf
+      - name: Create page directory
+        run: |
+          mkdir _pages
+          mv ./main.pdf ./_pages/main.pdf
+          echo "<meta http-equiv=\"refresh\" content=\"0;URL='$(gh api "repos/$GITHUB_REPOSITORY" --jq '.html_url')'\">" > ./_pages/index.html
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _pages/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
