@@ -29,13 +29,7 @@ jobs:
         with:
           font-name: Shippori Antique B1
       - name: Install "Julia Mono"
-        run: |
-          cd ${{ runner.temp }}
-          wget -O julia-mono.zip https://github.com/cormullion/juliamono/releases/download/v0.058/JuliaMono-ttf.zip
-          unzip julia-mono.zip -d julia-mono
-          rm julia-mono/LICENSE
-          mv julia-mono /usr/share/fonts/julia-mono
-          fc-cache -fv
+        uses: SnO2WMaN/install-juliamono-action@main
       - uses: typst-community/setup-typst@v3
       - run: typst fonts
       - run: typst compile main.typ main.pdf
