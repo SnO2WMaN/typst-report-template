@@ -20,22 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install "Shippori Antique B1"
-        run: |
-          cd ${{ runner.temp }}
-          wget -O shippori-antique-b1.zip https://api.fontsource.org/v1/download/shippori-antique-b1
-          unzip shippori-antique-b1.zip
-          rm ttf/shippori-antique-b1-[0-9]*
-          mv ttf /usr/share/fonts/shippori-antique-b1
-          fc-cache -fv
-      - name: Install "Shippori Mincho B1"
-        run: |
-          cd ${{ runner.temp }}
-          wget -O shippori-mincho-b1.zip https://api.fontsource.org/v1/download/shippori-mincho-b1
-          unzip shippori-mincho-b1.zip
-          rm ttf/shippori-mincho-b1-[0-9]*
-          mv ttf /usr/share/fonts/shippori-mincho-b1
-          fc-cache -fv
+      - uses: actions/SnO2WMaN/fontsource-action@main
+        with:
+          font-name: Shippori Mincho B1
+      - uses: actions/SnO2WMaN/fontsource-action@main
+        with:
+          font-name: Shippori Antique B1
       - name: Install "Julia Mono"
         run: |
           cd ${{ runner.temp }}
