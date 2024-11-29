@@ -21,15 +21,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install "Shippori Mincho B1"
-        uses: SnO2WMaN/install-fontsource-action@main
+        uses: SnO2WMaN/install-fontsource-action@v0.0.1
         with:
           font-name: Shippori Mincho B1
       - name: Install "Shippori Antique B1"
-        uses: SnO2WMaN/install-fontsource-action@main
+        uses: SnO2WMaN/install-fontsource-action@v0.0.1
         with:
           font-name: Shippori Antique B1
       - name: Install "Julia Mono"
-        uses: SnO2WMaN/install-juliamono-action@main
+        uses: SnO2WMaN/install-juliamono-action@v0.0.1
       - uses: typst-community/setup-typst@v3
       - run: typst fonts
       - run: typst compile main.typ main.pdf
