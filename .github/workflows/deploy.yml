@@ -20,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/SnO2WMaN/fontsource-action@main
+      - uses: SnO2WMaN/fontsource-action@main
         with:
           font-name: Shippori Mincho B1
-      - uses: actions/SnO2WMaN/fontsource-action@main
+      - uses: SnO2WMaN/fontsource-action@main
         with:
           font-name: Shippori Antique B1
       - name: Install "Julia Mono"
