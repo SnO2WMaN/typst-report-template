@@ -122,7 +122,6 @@
 )[#body]
 
 #let code = sourcecode.with(
-  numbers-start: 40,
   gutter: 1em,
   frame: block.with(
     radius: 0pt,
