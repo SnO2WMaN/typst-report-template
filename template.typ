@@ -46,70 +46,66 @@
   bibliography("references.bib", style: "springer-lecture-notes-in-computer-science")
 }
 
-#let definition = thmbox(
+#let thmplain = thmbox.with(
+  breakable: false,
+  radius: 0pt,
+  inset: (left: 1.25em, right: 1.25em, top: 1.5em, bottom: 1.5em),
+)
+
+#let definition = thmplain(
   "theorem",
   "定義",
-  radius: 0pt,
+  breakable: true,
   fill: luma(250),
-  inset: (left: 1.25em, right: 1.25em, top: 1.5em, bottom: 1.5em),
   stroke: (left: (thickness: 0.5em, paint: luma(100))),
 )
 
-#let theorem = thmbox(
+#let theorem = thmplain(
   "theorem",
   "定理",
-  radius: 0pt,
   fill: luma(250),
-  inset: (left: 1.25em, right: 1.25em, top: 1.5em, bottom: 1.5em),
   stroke: (left: (thickness: 0.5em, paint: luma(100))),
 )
 
-#let proposition = thmbox(
+#let proposition = thmplain(
   "theorem",
   "命題",
-  radius: 0pt,
   fill: luma(250),
-  inset: (left: 1.25em, right: 1.25em, top: 1.5em, bottom: 1.5em),
   stroke: (left: (thickness: 0.5em, paint: luma(100))),
 )
 
-#let lemma = thmbox(
+#let lemma = thmplain(
   "theorem",
   "補題",
-  radius: 0pt,
   fill: luma(250),
-  inset: (left: 1.25em, right: 1.25em, top: 1em, bottom: 1em),
   stroke: (left: (thickness: 0.5em, paint: luma(190))),
 )
 
-#let corollary = thmbox(
+#let corollary = thmplain(
   "theorem",
   "系",
-  radius: 0pt,
   fill: luma(250),
-  inset: (left: 1.25em, right: 1.25em, top: 1.5em, bottom: 1.5em),
   stroke: (left: (thickness: 0.5em, paint: luma(150))),
 )
 
-#let remark = thmbox(
+#let remark = thmplain(
   "theorem",
   "注意",
+  breakable: true,
   stroke: (left: (thickness: 1pt, paint: luma(230))),
-  inset: (left: 8pt, top: 2pt, bottom: 2pt),
-  radius: 0pt,
 )
 
 #let example = thmbox(
   "theorem",
   "例",
-  stroke: (left: (thickness: 1pt, paint: luma(230))),
+  breakable: true,
   inset: (left: 12pt, top: 5pt, bottom: 8pt),
-  radius: 0pt,
 )
 
 #let proof = thmproof(
   "proof",
   "証明",
+  breakable: true,
   titlefmt: strong,
   namefmt: name => [(#name)],
 )
