@@ -22,11 +22,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install "Shippori Mincho B1"
-        uses: SnO2WMaN/install-fontsource-action@v0.0.1
+        uses: SnO2WMaN/install-fontsource-action@v0.0.2
         with:
           font-name: Shippori Mincho B1
       - name: Install "Shippori Antique B1"
-        uses: SnO2WMaN/install-fontsource-action@v0.0.1
+        uses: SnO2WMaN/install-fontsource-action@v0.0.2
         with:
           font-name: Shippori Antique B1
       - name: Install "Julia Mono"
