@@ -19,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install "Shippori Mincho B1"
         uses: SnO2WMaN/install-fontsource-action@v0.0.1
         with:
