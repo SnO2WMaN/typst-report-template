@@ -31,9 +31,6 @@
   #lorem(20)
 ]
 
-#proof[
-]
-
 それでは @thm:GL_fixpoint を証明する．
 
 #proof([@thm:GL_fixpoint])[]

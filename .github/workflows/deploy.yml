@@ -33,6 +33,7 @@ jobs:
         uses: SnO2WMaN/install-juliamono-action@v0.0.1
       - uses: typst-community/setup-typst@v3
       - run: typst fonts
+      - run: gh repo view --json licenseInfo,url > meta.json
       - run: typst compile main.typ main.pdf
       - name: Create page directory
         run: |
