@@ -31,7 +31,7 @@ jobs:
           font-name: Shippori Antique B1
       - name: Install "Julia Mono"
         uses: SnO2WMaN/install-juliamono-action@v0.0.1
-      - uses: typst-community/setup-typst@v3
+      - uses: typst-community/setup-typst@v4
       - run: typst fonts
       - run: gh repo view --json licenseInfo,url > meta.json
         env:
