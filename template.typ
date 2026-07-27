@@ -1,6 +1,6 @@
 #import "@preview/ctheorems:1.1.3": *
 #import "@preview/codelst:2.0.2": sourcecode
-#import "@preview/equate:0.2.1": equate
+#import "@preview/equate:0.3.3": equate
 
 #let project(
   title: "",
