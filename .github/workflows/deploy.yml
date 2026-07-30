@@ -44,7 +44,7 @@ jobs:
           echo "<meta http-equiv=\"refresh\" content=\"0;URL='$(gh api "repos/$GITHUB_REPOSITORY" --jq '.html_url')'\">" > ./_pages/index.html
         env:
           GH_TOKEN: ${{ github.token }}
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _pages/
 
